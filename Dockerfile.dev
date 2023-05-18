@@ -1,0 +1,17 @@
+# Setup the base image
+FROM node:19-alpine
+
+# Setup working directory
+WORKDIR /home/app/frontend
+
+# Copy the package dependency file from local machine to virtual container
+COPY package.json .
+
+# Run npm install to implement package installation
+RUN npm install
+
+# Copy other code files from local machine to virtual machine
+COPY . .
+
+# Start the container
+CMD ["npm", "run", "start"]
